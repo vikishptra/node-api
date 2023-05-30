@@ -12,6 +12,11 @@ const connection = mysql.createConnection({
   database: 'cloud-api'
 });
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 // Menghubungkan ke MySQL
 connection.connect((err) => {
   if (err) {
